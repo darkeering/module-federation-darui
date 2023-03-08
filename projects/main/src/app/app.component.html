@@ -1,5 +1,13 @@
-<p>main works name = {{name}}, count = {{count}}</p>
-<button (click)="onclick()">add</button>
+<span>remoteEntry:</span> <input type="text" [(ngModel)]="remoteEntry" >
+<br>
+<span>exposedModule:</span> <input type="text" [(ngModel)]="exposedModule" >
+<br>
+<span>entryModule:</span> <input type="text" [(ngModel)]="entryModule" >
+<br>
+
+<button routerLink="/mfe1">loadMfe1</button>
+<button (click)="loadMfe()">loadMfe</button>
+
+<p>main works</p>
 <router-outlet></router-outlet>
 <br />
---------------------------------------------
