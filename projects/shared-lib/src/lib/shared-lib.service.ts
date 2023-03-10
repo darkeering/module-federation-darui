@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Subject, BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +7,7 @@ import { Subject } from 'rxjs';
 export class SharedLibService {
   name = 'main SharedLibService'
   count = 0
-  count$ = new Subject<number>()
+  count$ = new BehaviorSubject<number>(this.count)
   constructor() { }
 
   setCount(count: number) {

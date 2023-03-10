@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "run:all": "node node_modules/@angular-architects/module-federation/src/server/mf-dev-server.js",
-    "cbuild": "ng build shared-lib && cp -r projects/shared-lib/src/css/ dist/shared-lib/"
+    "cbuild": "cd projects/shared-lib && npm version patch && cd ../../ && ng build shared-lib && cp -r projects/shared-lib/src/css/ dist/shared-lib/"
   },
   "private": true,
   "dependencies": {
