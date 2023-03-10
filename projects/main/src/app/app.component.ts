@@ -1,7 +1,7 @@
 import { loadRemoteModule } from '@angular-architects/module-federation';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { SharedLibService } from 'projects/shared-lib/src/public-api';
+import { SharedLibService } from '@darkeering/shared-lib';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +9,22 @@ import { SharedLibService } from 'projects/shared-lib/src/public-api';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  tabActiveId: string | number = 'mfe1';
+  tabItems = [
+    // {
+    //   id: '',
+    //   title: 'home',
+    // },
+    {
+      id: 'mfe1',
+      title: 'mfe1',
+    },
+    {
+      id: 'mfe2',
+      title: 'mfe2',
+    },
+  ];
   title = 'main';
   name = ''
   count = 0
@@ -25,36 +41,18 @@ export class AppComponent {
     this.sharedLibService.count$.subscribe(count => {
       this.count = count
     })
+  }
 
-
-    window.addEventListener('popstate', () => {
-      console.log(111);
-
-    })
-
-    // const rawPushState = window.history.pushState
-    // console.log(rawPushState);
+  activeTabChange(tab: any) {
+    console.log(tab);
     
-
-    // window.history.pushState = (...args) => {
-    //   rawPushState.apply(window.history.pushState, args)
-    //   debugger
-    //   this.router.navigateByUrl('/mfe1')
-    //   console.log(args);
-    //   history.pushState()
-    // }
-
-    // const rawReplaceState = window.history.replaceState
-
-    // window.history.replaceState = (...args) => {
-    //   rawReplaceState.apply(window.history.replaceState, args)
-    //   console.log(333);
-
-    // }
+    this.router.navigate([`/${tab}`])
   }
-  onclick() {
-    this.sharedLibService.setCount(this.count + 1)
+
+  setCount(count: any) {
+    this.sharedLibService.setCount(count)
   }
+
   loadHome() {
     this.router.resetConfig([
       {
@@ -70,16 +68,6 @@ export class AppComponent {
   }
 
   loadMfe() {
-    // this.router.resetConfig([
-    //   {
-    //     path: '',
-    //     loadChildren: () => loadRemoteModule({
-    //       type: 'module',
-    //       remoteEntry: `${this.remoteEntry}/remoteEntry.js`,
-    //       exposedModule: this.exposedModule,
-    //     }).then(m => m[this.entryModule])
-    //   }
-    // ])
     this.router.navigate(['/mfe2'])
   }
 }

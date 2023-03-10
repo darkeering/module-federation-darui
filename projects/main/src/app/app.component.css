@@ -1,0 +1,12 @@
+.main-container {
+  background-color: #eee;
+  display: flex;
+  flex-direction: column;
+  padding: 50px 50px 0 50px;
+  height: 100vh;
+}
+
+.communication {
+  display: flex;
+  flex-direction: column;
+}

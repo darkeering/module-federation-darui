@@ -15,6 +15,6 @@ module.exports = withModuleFederationPlugin({
       strictVersion: true,
       requiredVersion: "auto",
     }),
-    "projects/shared-lib/src/public-api": { singleton: true },
+    "@darkeering/shared-lib": { singleton: true },
   },
 });

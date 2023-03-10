@@ -4,33 +4,13 @@ import { RouterModule } from '@angular/router';
 import { loadRemoteModule } from '@angular-architects/module-federation'
 
 import { AppComponent } from './app.component';
-import { LeaveGuard } from './leave.guard';
-import { APP_BASE_HREF } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CanActiveGuard } from './can-active.guard';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { HomeComponent } from './home/home.component';
-
-// window.addEventListener('popstate', () => {
-//   console.log(111);
-
-// })
-
-// const rawPushState = window.history.pushState
-
-// window.history.pushState = (...args) => {
-//   rawPushState.apply(window.history.pushState, args)
-//   console.log(222);
-
-// }
-
-// const rawReplaceState= window.history.replaceState
-
-// window.history.replaceState = (...args) => {
-//   rawReplaceState.apply(window.history.replaceState, args)
-//   console.log(333);
-
-// }
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { TabsModule } from 'ng-devui/tabs';
+import { ButtonModule } from 'ng-devui';
 
 @NgModule({
   declarations: [
@@ -40,7 +20,10 @@ import { HomeComponent } from './home/home.component';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
+    TabsModule,
+    ButtonModule,
     RouterModule.forRoot([
       {
         path: '',
@@ -54,7 +37,6 @@ import { HomeComponent } from './home/home.component';
       },
       {
         path: 'mfe2',
-        // canDeactivate: [LeaveGuard],
         loadChildren: () => loadRemoteModule({
           type: 'module',
           remoteEntry: 'http://localhost:4202/remoteEntry.js',

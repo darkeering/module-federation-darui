@@ -1,13 +1,21 @@
-<span>remoteEntry:</span> <input type="text" [(ngModel)]="remoteEntry" >
-<br>
-<span>exposedModule:</span> <input type="text" [(ngModel)]="exposedModule" >
-<br>
-<span>entryModule:</span> <input type="text" [(ngModel)]="entryModule" >
-<br>
-
-<button routerLink="/mfe1">loadMfe1</button>
-<button (click)="loadMfe()">loadMfe</button>
-
-<p>main works</p>
-<router-outlet></router-outlet>
-<br />
+<div class="main-container">
+  <d-tabs
+    type="slider"
+    [(activeTab)]="tabActiveId"
+    (activeTabChange)="activeTabChange($event)"
+  >
+    <d-tab
+      *ngFor="let item of tabItems"
+      [id]="item.id"
+      [title]="item.title"
+    ></d-tab>
+  </d-tabs>
+  <div class="communication">
+    通信: name={{ name }};count={{ count }}
+    <div>
+      <d-button bsSize="sm" (btnClick)="setCount(count+1)">+1</d-button>{{' '}}
+      <d-button bsSize="sm" (btnClick)="setCount(count-1)">-1</d-button>
+    </div>
+  </div>
+  <router-outlet></router-outlet>
+</div>
